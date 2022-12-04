@@ -5,7 +5,6 @@ describe("Check sign up, sign out, sign in and delete account",()=>{
         cy.visit('/');
         cy.clearCookies()
         cy.clearLocalStorage()
-        cy.wait(5000);
     })
     it('Check sign out is not visible and go to sign in page',()=>{
         cy.get("#signOut")
@@ -14,13 +13,12 @@ describe("Check sign up, sign out, sign in and delete account",()=>{
         cy.get('#signIn')
         .contains('Sign In')
         .click()
-        cy.wait(5000)
     })
     it("Check username and password labels are present",()=>{
         cy.get("label")
-        .contains("username")
+        .contains("Username")
         cy.get("label")
-        .contains("password")
+        .contains("Password")
 
     })
     it("Enter text and sign in",()=>{
@@ -28,7 +26,6 @@ describe("Check sign up, sign out, sign in and delete account",()=>{
         .type("test1@test1.com")
         cy.get("#password")
         .type("test1{enter}")
-        .wait(5000)
 
         cy.url().should('eq',Cypress.config().baseUrl)
 
@@ -36,7 +33,7 @@ describe("Check sign up, sign out, sign in and delete account",()=>{
         .should('not.exist')
 
         cy.get("#cart")
-        .contains("You have 0 items in your basket")
+        .contains("You have 0 items in your basket.")
 
         cy.get("#welcomeMessage")
         .contains("Hi test 1")
@@ -65,7 +62,7 @@ describe("Check sign up, sign out, sign in and delete account",()=>{
         .should('not.exist')
 
         cy.get("#cart")
-        .contains("You have 1 item in your basket")
+        .contains("You have 1 item in your basket.")
 
         cy.get("#welcomeMessage")
         .contains("Hi test 2")

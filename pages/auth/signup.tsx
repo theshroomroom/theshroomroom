@@ -32,7 +32,7 @@ export default function SignUp(){
                 Router.push('/')
             }
         }
-        catch(error){
+        catch(error:any){
 
             await fetch('/api/clientSideError',{
                 method:"POST",

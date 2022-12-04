@@ -1,6 +1,6 @@
 import { getCsrfToken,getSession } from 'next-auth/react';
 import {useState,FormEvent} from 'react';
-
+import authenticate from '../../utils/authenticationRequired'
 export default function ChangePassword(){
     const [currentPassword,setCurrentPassword] = useState<string>('');
     const [validateCurrentPassword,setValidateCurrentPassword]=useState<boolean|undefined>(undefined);
@@ -50,7 +50,7 @@ export default function ChangePassword(){
             }
 
         }
-        catch(e){
+        catch(e:any){
             console.log(e);
             setFormError(e.message);
         }
@@ -73,8 +73,17 @@ export default function ChangePassword(){
 
             <button onClick={(e)=>changePasswordHandler(e)}>Change Password</button>
             
-            <p>{passwordChanged}{formError}</p>
+            <p id="message">{passwordChanged}{formError}</p>
         </form>
         </>
     )
+}
+
+
+export async function getServerSideProps(ctx:any){
+    return authenticate(ctx,({sesh}:any)=>{
+        return {
+            props: sesh
+        }
+    })
 }

@@ -6,7 +6,7 @@ import {CartContext} from '../context/cart'
 import Link from 'next/link';
 import Image from 'next/image';
 
-import {imageMap} from './imageMap/imageMap';
+import {imageMap} from '../utils/imageMap/imageMap';
 interface Product{
     _id:String,
     name: string,
@@ -29,22 +29,22 @@ export default function Cart(){
                             context&&context.state.cart&&context.state.cart.items?
                                 context.state.cart.items.map(({_id,name,quantity,price},idx:number)=>{
                                     return(
-                                        <div key={"Index"+idx}>
-                                            <h2>{name}</h2>
+                                        <div key={name}>
+                                            <h2 className="product-name">{name}</h2>
                                             
                                             {
                                                 name?
 
-                                                <Image width={imageMap[name].width} height={imageMap[name].height} src={`${imageMap[name].path}.${imageMap[name].fileType}`}/>
+                                                <Image className="product-image" width={imageMap[name].width} height={imageMap[name].height} src={`${imageMap[name].path}.${imageMap[name].fileType}`} alt={name}/>
                                                 :
                                                 null
                                             }
                                             <div>
-                                            <span><b>Qty:</b> </span><select id={`quantity${idx}`}name={"quantity"} defaultValue={String(quantity)}>
+                                            <span><b>Qty:</b> </span><select className="product-quantity"id={`quantity${idx}`}name={"quantity"} defaultValue={String(quantity)}>
                                                 {
                                                     [1,2,3,4,5,6,7,8,9,10].map((el:number)=>{
                                                         return (
-                                                            <option value={String(el)}>{String(el)}</option>
+                                                            <option key={String(el)}value={String(el)}>{String(el)}</option>
                                                         )
                                                     })
                                                 }
@@ -52,9 +52,7 @@ export default function Cart(){
                                             </select>
                                             </div>
                                             <div>
-                                            <button onClick={async(e)=>{
-                                                const session = await getSession()
-                                                console.log("id",_id)
+                                            <button className="product-save" onClick={async(e)=>{
                                                 const input = document.getElementById(`quantity${idx}`) as HTMLInputElement
                                                 context.saveCart?
                                                 context.saveCart({
@@ -64,8 +62,7 @@ export default function Cart(){
                                                     price:Number(price)
                                                 }):null}
                                             }>Save</button>
-                                            <button onClick={async(e)=>{
-                                                const session = await getSession()
+                                            <button className="product-delete"onClick={async(e)=>{
                                                 console.log("id",_id)
                                                 context.saveCart?
                                                 context.saveCart({
@@ -76,7 +73,7 @@ export default function Cart(){
                                                 }):null}
                                             }>Delete</button>
                                             </div>
-                                            <p><b>Price: </b> £{quantity*price}</p>
+                                            <p className="product-price"><b>Price: </b> £{quantity*price}</p>
                                         </div>
                                     )}
                                 )
@@ -87,7 +84,7 @@ export default function Cart(){
                         <p><b>Shipping</b>{"£"+String(context.state.shipping)}</p>
                       
                         <p><b>Total</b>{"£"+String(context.state.total)}</p>
-                        <button><Link href="/checkout">Checkout</Link></button>
+                        <Link  href="/checkout"><a id="checkout">Checkout</a></Link>
                             </div>
                         </>
                         :

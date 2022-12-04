@@ -28,7 +28,7 @@ export default function Header(){
         }
     }
     return (
-        <header className={styles.header}>
+        <header id="header" className={styles.header}>
             <div id="burgerMenu"
                 onClick={(e)=>{
                     menuOpen()
@@ -51,10 +51,10 @@ export default function Header(){
                                 e.preventDefault()
                                 signOut()
                             }}>Sign Out</a></Link>
-                            <Link href="/myaccount" passHref replace><a className={styles["toolbar-element"]}>My Account</a></Link>
+                            <Link id="myAccount"href="/myaccount" passHref replace><a className={styles["toolbar-element"]}>My Account</a></Link>
                             </>
                         }
-                        <Link href="/cart" passHref replace><a id="cart" className={styles["toolbar-element"]}>{`You have ${context.state.totalQuantity} item${context.state.totalQuantity===1?'' :'s'} in basket.`}</a></Link>
+                        <Link href="/cart" passHref replace><a id="cart" className={styles["toolbar-element"]}>{`You have ${context.state.totalQuantity} item${context.state.totalQuantity===1?'' :'s'} in your basket.`}</a></Link>
                     </div>
                     <div className={styles["title-bar-element"]}>
                         <Link href='/'><h1 className={styles.title}>The Shroom Room</h1></Link>

@@ -14,7 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './userActions'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
@@ -29,6 +29,7 @@ declare global {
   namespace Cypress {
     interface Chainable {
       mount: typeof mount
+      login(username:string,password:string):Chainable<Element>
     }
   }
 }

@@ -1,10 +1,10 @@
 import {useEffect,useState,useContext} from 'react';
 import Image from 'next/image';
-import {imageMap} from '../../imageMap/imageMap';
+import {imageMap} from '../../../utils/imageMap/imageMap';
 import {CartContext} from '../../../context/cart';
-import {getSession} from 'next-auth/react'
+
 export default function ProductDetails(){
-    const context = useContext(CartContext)
+    const context = useContext(CartContext);
     const [name,setName]=useState('');
     const [description,setDescription]=useState('');
     const [imageUrl,setImageUrl]=useState('');
@@ -30,33 +30,32 @@ export default function ProductDetails(){
         initiate()
 
 
-    })
+    },[])
     return(
         <>
-            <h1>{name?name:null} </h1>
+            <h1 id="productName">{name?name:null} </h1>
             {
                 name?
 
-                <Image width={imageMap[name].width} height={imageMap[name].height} src={`${imageMap[name].path}.${imageMap[name].fileType}`}/>
+                <Image id="productImage"width={imageMap[name].width} height={imageMap[name].height} src={`${imageMap[name].path}.${imageMap[name].fileType}`} alt={name}/>
                 :
                 null
             }
-            <p>{description?description:null}</p>
-            <p> Price: {price?price:null}</p>
+            <p id="productDescription">{description?description:null}</p>
+            <p id="productPrice"> Price: {price?price:null}</p>
 
-            <select id={`quantity`}name={"quantity"}>
+            <select id={`productQuantity`}name={"quantity"}>
                             {
                                 [1,2,3,4,5,6,7,8,9,10].map((el:Number)=>{
                                     return (
-                                        <option value={String(el)}>{String(el)}</option>
+                                        <option key={String(el)}value={String(el)}>{String(el)}</option>
                                     )
                                 })
                             }
 
             </select>
-            <button onClick={async(e)=>{
-                const session = await getSession()
-                const input = document.getElementById(`quantity`) as HTMLInputElement;
+            <button id="productAddToCart"onClick={async(e)=>{
+                const input = document.getElementById(`productQuantity`) as HTMLInputElement;
                 context.saveCart? context.saveCart({
                     _id:id,
                     name:name,

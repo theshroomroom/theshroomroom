@@ -9,6 +9,7 @@ export default function MyAccountOrders(){
     const [cancelOrderId,setCancelOrderId]=useState('');
     const [cancelError, setCancelError]=useState<string|null>(null)
     const [error,setError]=useState<string|null>(null)
+    const router = useRouter()
     useEffect(()=>{
         const initiate=async()=>{
             try{
@@ -19,9 +20,8 @@ export default function MyAccountOrders(){
                 await getOrders(sesh)
 
             }
-            catch(e){
+            catch(e:any){
                 console.log(e)
-                const router = useRouter()
                 router.push("/")
             }
         }
@@ -36,7 +36,7 @@ export default function MyAccountOrders(){
             setOrders(orderDataJson.orders)
 
         }
-        catch(e){
+        catch(e:any){
             await fetch('/api/clientSideError',{
                 method:"POST",
                 headers: {
@@ -78,7 +78,7 @@ export default function MyAccountOrders(){
             }
 
         }
-        catch(error){
+        catch(error:any){
             
             await fetch('/api/clientSideError',{
                 method:"POST",
@@ -108,7 +108,7 @@ export default function MyAccountOrders(){
             setCancelOrderId(id)
 
         }
-        catch(e){
+        catch(e:any){
 
             setError(e)
         }
@@ -125,7 +125,7 @@ export default function MyAccountOrders(){
             }
 
         }
-        catch(e){
+        catch(e:any){
 
             setError(e)
         }
@@ -139,7 +139,7 @@ export default function MyAccountOrders(){
             null    
         }
         <div className={`cancel-modal hidden`}>
-                            <p>Are you sure you'd like to cancel this order?</p>
+                            <p>Are you sure you&apos;d like to cancel this order?</p>
                             <button onClick={(e)=>{
                                 cancelOrder(e)
                             }}>Yes</button>
@@ -177,9 +177,9 @@ export default function MyAccountOrders(){
 }
 export async function getServerSideProps(ctx:any){
 
-    return authenticate(ctx,({session}:any)=>{
+    return authenticate(ctx,({sesh}:any)=>{
         return {
-            props: session
+            props: sesh
         }
     })
 }

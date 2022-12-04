@@ -23,12 +23,11 @@ export default function Edit(){
     useEffect(()=>{
         const securePage=async()=>{
             const session = await getSession()
-            console.log(session)
             if(!session){
                 signIn()
             }
             else {
-                fetch(`http://localhost:3000/api/getUser/email=${session.user.email}`)
+                fetch(`http://localhost:3000/api/getUser/${session.user.email}`)
                 .then((res)=>{
                     return res.json()
                 })
@@ -107,7 +106,7 @@ export default function Edit(){
             },1500)
 
         }
-        catch(e){
+        catch(e:any){
             await fetch('/api/clientSideError',{
                 method:"POST",
                 headers: {
@@ -176,9 +175,9 @@ export default function Edit(){
 }
 
 export async function getServerSideProps(ctx:any){
-    return authenticate(ctx,({session}:any)=>{
+    return authenticate(ctx,({sesh}:any)=>{
         return {
-            props: session
+            props: sesh
         }
     })
 }

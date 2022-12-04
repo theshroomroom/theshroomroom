@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,FormEvent} from 'react';
 
 export default function ShareYourRecipes(){
     const [mealName,setMealName]=useState('');
@@ -6,13 +6,13 @@ export default function ShareYourRecipes(){
     const [ingredients,setIngredients]=useState('');
     const [recipe,setRecipe]=useState('');
     const [sent,setSent]=useState<string|null>(null)
-    async function submitRecipe(){
+    async function submitRecipe(e:FormEvent){
 
     }
     return(
         <>
             <h1>Share Your Recipes</h1>
-            <p>Use the form below to send a recipe to us and we'll post it.</p>
+            <p>Use the form below to send a recipe to us and we&apos;ll post it.</p>
             <form>
                 <div>
                     <label htmlFor="mealName">Name of meal</label>

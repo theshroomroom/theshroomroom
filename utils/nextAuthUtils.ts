@@ -14,7 +14,7 @@ export default async(userpassword:string,password:string):Promise<Boolean>=> {
         return true
 
     }
-    catch(e){
+    catch(e:any){
         console.log(e)
         return false
     }

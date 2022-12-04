@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import {useEffect, useState, FormEvent,useContext} from 'react';
-import { getSession,useSession } from 'next-auth/react';
+import {useEffect, useState, useContext} from 'react';
 import {CartContext} from '../../context/cart';
-import {imageMap} from '../imageMap/imageMap'
+import {imageMap} from '../../utils/imageMap/imageMap'
 
 interface ProductInterface{
     name:String;
@@ -29,30 +28,30 @@ export default function Product(props:{mushrooms:ProductInterface[]}){
             products&&products.length>0?
         <ul>
         {
-            products.map(({_id,name,description,price}:any,idx)=>{
+            products.length>0?products.map(({_id,name,description,price}:any,idx)=>{
                 return(
-                    <div key={idx}>
+                    <div className="product"  key={name}>
                         <Link  href={`/products/${name.replace(/[\s]/gi,'-').replace(/['\'']/gi,'&apos')}`} >
                             <a>
-                                <h2>{name}</h2>
+                                <h2 className="product-name">{name}</h2>
 
                                 {
                                     name?
 
-                                    <Image width={imageMap[name].width} height={imageMap[name].height} src={`${imageMap[name].path}.${imageMap[name].fileType}`}/>
+                                    <Image className="product-image" width={imageMap[name].width} height={imageMap[name].height} src={`${imageMap[name].path}.${imageMap[name].fileType}`} alt={name}/>
                                     :
                                     null
                                 }
 
                             </a>
                         </Link>
-                            <p>£{price}</p>
-                            <p>{description}</p>
-                        <select id={`quantity${idx}`}name={"quantity"}>
+                            <p className="product-price">£{price}</p>
+                            <p className="product-description">{description}</p>
+                        <select className="product-quantity" id={`quantity${idx}`}name={"quantity"}>
                             {
                                 [1,2,3,4,5,6,7,8,9,10].map((el:Number)=>{
                                     return (
-                                        <option value={String(el)}>{String(el)}</option>
+                                        <option className="product-quantity-options"  key={String(el)} value={String(el)}>{String(el)}</option>
                                     )
                                 })
                             }
@@ -60,8 +59,6 @@ export default function Product(props:{mushrooms:ProductInterface[]}){
                         </select>
                         
                         <button onClick={async(e)=>{
-                            const session = await getSession()
-                            console.log("id",_id)
                             const input = document.getElementById(`quantity${idx}`) as HTMLInputElement;
                             context.saveCart? context.saveCart({
                                 _id:_id,
@@ -69,15 +66,17 @@ export default function Product(props:{mushrooms:ProductInterface[]}){
                                 quantity:Number(input.value),
                                 price: Number(price)
                             }):null}
-                        }>Add to basket</button>
+                        }
+                        className="product-add-to-cart-button"
+                        >Add to basket</button>
 
                     </div>
                 )
-            })
+            }):null
         }
 
         </ul>:
-        <p>Unusual this, but nothing available</p>
+        <p id="noProducts">No products available.</p>
     }
         </>
     )

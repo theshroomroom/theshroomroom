@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "cy:open": "npm run dev & cypress open",
+    "cy:open": "cypress open",
     "cy:run": "npm run dev & cypress run"
   },
   "dependencies": {

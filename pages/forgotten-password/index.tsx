@@ -36,7 +36,7 @@ export default function ForgottenPassword(){
             }
 
         }
-        catch(e){
+        catch(e:any){
             await fetch('/api/clientSideError',{
               method:"POST",
               headers: {

@@ -2,9 +2,9 @@ import {useState,useEffect} from 'react';
 
 export default function WhatWeGrow(props:any) {
     const [mushArr,setMushArr] = useState([])
-    useEffect(()=>{
-        setMushArr(props)
-    },[])
+    // useEffect(()=>{
+    //     setMushArr(props)
+    // },[])
 
     return (
         <>

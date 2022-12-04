@@ -26,7 +26,7 @@ export default function Privacy(){
                         <li>the singular includes the plural and vice versa</li>
                         <li>references to sub-clauses, clauses, schedules or appendices are to sub-clauses, clauses, schedules or appendices of this privacy policy;</li>
                         <li>a reference to a person includes firms, companies, government entities, trusts and partnerships;</li>
-                        <li>"including" is understood to mean "including without limitation"</li>
+                        <li>&quot;including&quot; is understood to mean &quot;including without limitation&quot;</li>
                         <li>reference to any statutory provision includes any modification or amendment to it;</li>
                         <li>the headings and sub-headings do not form part of this privacy policy.</li>
                     </ol>
@@ -36,7 +36,7 @@ export default function Privacy(){
                     This privacy policy applies only to the actions of the Shroom Room and users with respect to this website. It does not extend to any other websites that can be accessed from this website including but not limited to, any links we may provide to social media websites.
                 </li>
                 <li>
-                    For the purposes of applicable Data Protection Laws, the Shroom Room is the "data controller". This means that the Shroom Room determines the purposes for which, and the manner in which, your Data is processed.
+                    For the purposes of applicable Data Protection Laws, the Shroom Room is the &quot;data controller&quot;. This means that the Shroom Room determines the purposes for which, and the manner in which, your Data is processed.
                 </li>
                 <h2>How we collect data</h2>
                 <li>
@@ -80,7 +80,7 @@ export default function Privacy(){
                 <h2>Your rights</h2>
                 <li>You have the following rights in relation to your Data:
                     <ol>
-                        <li>Right to access - the right to request (i) copies of the information we hold about you at any time, or (ii) that we modify, update or delete such information. If we provide you with access to the information we hold about you, we will not charge you for this, unless your request is "manifestly unfounded or excessive." Where we are legally permitted to do so, we may refuse your request. If we refuse your request, we will tell you the reasons why.</li>
+                        <li>Right to access - the right to request (i) copies of the information we hold about you at any time, or (ii) that we modify, update or delete such information. If we provide you with access to the information we hold about you, we will not charge you for this, unless your request is &quot;manifestly unfounded or excessive.&quot; Where we are legally permitted to do so, we may refuse your request. If we refuse your request, we will tell you the reasons why.</li>
                         <li>Right to correct - the right to have your data rectified if it is inaccurate or incomplete.</li>
                         <li>Right to erase - the right to request that we delete or remove your data from our systems.</li>
                         <li>Right to restrict our use of your data - the right to block us from using your data or limit the way in which we can use it.</li>
@@ -90,7 +90,7 @@ export default function Privacy(){
                         </ol>
                 </li>
                 <li>To make enquiries, exercise any of your rights set out above, or withdraw your consent to the processing of your data (where consent is our legal basis for processing your data), please contact us via this e-mail address: {process.env.COMPANY_EMAIL}.</li>
-                <li>If you are not satisfied with the way a complaint you make in relation to your data is handled by us, you may be able to refer your complaint on to the relevant data protection authority. For the UK, this is the Information Commissioner's Ofice ICO. The ICO's contact details can be found on their website at <a href="https://ico.org.uk" target="_blank">https://ico.org.uk</a>.</li>
+                <li>If you are not satisfied with the way a complaint you make in relation to your data is handled by us, you may be able to refer your complaint on to the relevant data protection authority. For the UK, this is the Information Commissioner&apos;s Ofice ICO. The ICO&apos;s contact details can be found on their website at <a href="https://ico.org.uk" rel="noreferrer" target="_blank">https://ico.org.uk</a>.</li>
                 <li>It is important that the data we hold about you is accurate and current. Please keep us informed if your data changes during the period for which we hold it.</li>
                 <h2>Links to other websites</h2>
                 <li>This website may, from time to time, provide links to other websites. We have no control over such websites and are not responsible for the content of these websites. This privacy policy does not extend to your use of such websites. You are advised to read the privacy policy or statement of other websites prior to using them.</li>

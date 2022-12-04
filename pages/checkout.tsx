@@ -102,7 +102,7 @@ export const getServerSideProps =  async(ctx:any) => {
             }
         }
     }
-    catch(e){
+    catch(e:any){
         await errorHandler(JSON.stringify(req.headers),req.body?JSON.stringify(req.body):'no body',req.method, e.message,e.stack,false)
         console.log(e)
     }

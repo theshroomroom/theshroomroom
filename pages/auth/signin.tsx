@@ -22,7 +22,7 @@ export default function SignIn(){
             }
 
         }
-        catch(error){
+        catch(error:any){
             await fetch('/api/clientSideError',{
                 method:"POST",
                 headers: {

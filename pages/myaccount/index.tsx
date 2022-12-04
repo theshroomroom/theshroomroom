@@ -32,7 +32,7 @@ export default function MyAccount(){
     
             }
         }
-        catch(error){
+        catch(error:any){
             await fetch('/api/clientSideError',{
                 method:"POST",
                 headers: {
@@ -54,15 +54,15 @@ export default function MyAccount(){
             <Link href="/myaccount/edit" >Edit Details</Link>
             <Link href="/myaccount/orders">Orders</Link>
             <Link href="/myaccount/change-password">Change Password</Link>
-            <button onClick={(e)=>{
+            <button id="deleteAccount"onClick={(e)=>{
                 updateSure(true)
             }}>Delete account</button>
             {
                 sure?
-                <div>
+                <div id="deleteAccountModal">
                     <p>Are you sure you wish to delete your account?</p>
-                    <button onClick={(e)=>deleteAccount(e)}>Yes</button>
-                    <button onClick={(e)=>updateSure(false)}>No</button>
+                    <button className="modal-buttons"id="confirmDeleteAccount"onClick={(e)=>deleteAccount(e)}>Yes</button>
+                    <button className="modal-buttons"id="cancelDeleteAccount" onClick={(e)=>updateSure(false)}>No</button>
                 </div>:
                 null
             }

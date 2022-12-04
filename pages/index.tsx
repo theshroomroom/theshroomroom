@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import HomeBanner from '../components/banner'
 import Carousel from '../components/carousel'
-import {CarouselHomeNewArrivals} from './carouselConfig/home.module'
+import {CarouselHomeNewArrivals} from '../utils/carouselConfig/home.module'
 import styles from '../styles/Pages/Home.module.css'
 const Home: NextPage = () => {
   // useEffect(()=>{

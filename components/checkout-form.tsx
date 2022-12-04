@@ -75,21 +75,9 @@ export default function CheckoutForm(props:any){
     const [cardDetailsValid,setCardDetailsValid]=useState<boolean|null>(null);
     const [processing,setProcessing] = useState(false)
     const [errorMessage,setErrorMessage] = useState('');
-    const router = useRouter();
     const stripe = useStripe();
     const elements:any=useElements();
     useEffect(()=>{
-    const {success,cancelled}  = router.query;
-    if(success!==undefined && cancelled !== undefined){
-        if (success) {
-        console.log('Order placed! You will receive an email confirmation.');
-        }
-    
-        if (cancelled) {
-        console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
-        }
-    }
-    else{
         const initiate = async()=>{
             console.log(Object.getOwnPropertyNames(PaymentElement))
             const session = await getSession()
@@ -159,7 +147,7 @@ export default function CheckoutForm(props:any){
         initiate()
     }
     
-},[])
+,[])
     const paymentElementHandler=(e:any)=>{
         if(e.complete){
             console.log('incomplete')
@@ -257,7 +245,6 @@ export default function CheckoutForm(props:any){
                     paymentIntentId:props.paymentIntent.id
                 })
             })
-            console.log('did i reac here?')
             const reachedDatabase = await eventInitiated.json()
             if(reachedDatabase.success===false){
                 throw new Error("Order failed, no order received")
@@ -308,7 +295,7 @@ export default function CheckoutForm(props:any){
                 }
             }
         }
-        catch(e){
+        catch(e:any){
             console.log('yoyoyoy')
             console.log(e)
             setProcessing(false)
@@ -331,7 +318,7 @@ export default function CheckoutForm(props:any){
                 <>
                 <h2>Guest Checkout</h2>
                 <label htmlFor="guestEmailAddress">Email Address</label>
-                <input autoComplete="fuck-off" type="email" required={!user}id="guestEmailAddress" value={guestEmailAddress} 
+                <input autoComplete="fuck-off" type="email" required={!user} id="guestEmailAddress" value={guestEmailAddress} 
                     onBlur={(e)=>{
                         if(e.target.checkValidity()){
                             setGuestEmailAddressVal(true)
@@ -420,9 +407,8 @@ export default function CheckoutForm(props:any){
                 }/>
                 {
                     dSurnameVal===false?
-                    <p className={'error-text'}>Please enter a valid name</p>
+                    <p className={'error-text'}>Please enter a valid surname</p>
                     :null
-
                 }
                 <label htmlFor="dFirstLine">Street name and number</label>
                 <input autoComplete="fuck-off" required id="dFirstLine1" value={dFirstLine}
@@ -578,7 +564,7 @@ export default function CheckoutForm(props:any){
                 />
                 {
                     bSurnameVal===false?
-                    <p className={'error-text'}>Please enter a valid name</p>
+                    <p className={'error-text'}>Please enter a valid surname</p>
                     :null
 
                 }
@@ -688,9 +674,9 @@ export default function CheckoutForm(props:any){
 
                         </div>
                 }
-                <button type="submit" disabled={processing} onClick={(e)=>placeOrder(e)}>Submit</button>
+                <button id="placeOrder" type="submit" disabled={processing} onClick={(e)=>placeOrder(e)}>Submit</button>
             </form>
-            {checkoutError&& <p style={{color:"red"}}>{checkoutError}</p>}
+            {checkoutError&& <p className="form-error"style={{color:"red"}}>{checkoutError}</p>}
             </>
     )
 }

@@ -99,7 +99,7 @@ function MyApp({ Component, pageProps: {session,...pageProps} }: AppProps) {
             setLoaded(true)
 
           }
-          catch(e){
+          catch(e:any){
             await fetch('/api/clientSideError',{
               method:"POST",
               headers: {
@@ -168,7 +168,7 @@ function MyApp({ Component, pageProps: {session,...pageProps} }: AppProps) {
             }
             
         }
-        catch(e){
+        catch(e:any){
 
           await fetch('/api/clientSideError',{
             method:"POST",
