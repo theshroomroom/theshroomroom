@@ -91,7 +91,7 @@ export default function Product(props:{mushrooms:ProductInterface[]}){
     )
 }
 export async function getServerSideProps(){
-    const data= await fetch(`http://localhost:3000/api/products/`)
+    const data= await fetch(`${process.env.ORIGIN_URL}/api/products/`)
     const res = await data.json()
    
     return {
