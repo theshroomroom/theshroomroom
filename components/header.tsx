@@ -29,6 +29,10 @@ export default function Header(){
     }
     return (
         <header id="header" className={styles.header}>
+        <h1 style={{
+            "margin":0,
+            "textAlign": "center"
+        }}>THIS IS A TEST SITE</h1>
             <div id="burgerMenu"
                 onClick={(e)=>{
                     menuOpen()
