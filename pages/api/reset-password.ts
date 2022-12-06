@@ -32,7 +32,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
             await sendEmail({
                 subject: "Password reset",
                 html:`<p>Click the following link to reset your password</p>
-                        <a href="${process.env.ORIGIN_URL}/forgotten-password/${token}">LINK</a>`,
+                        <a href="https://${req.headers.host}/forgotten-password/${token}">LINK</a>`,
                 to:"theshroomroomdev@gmail.com",
                 from: "ServerSideError@theshroomroomdev.com"
             })

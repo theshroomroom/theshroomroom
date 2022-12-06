@@ -81,13 +81,20 @@ export default function Product(props:{mushrooms:ProductInterface[]}){
         </>
     )
 }
-export async function getServerSideProps(){
-    const data= await fetch(`http://localhost:3000/api/products?type=mycological-supplies`)
-    const res = await data.json()
+export async function getServerSideProps(ctx:any){
+    const {req,res} = ctx;
+    try {
+        const data= await fetch(`http://${req.headers.host}/api/products?type=mycological-supplies`)
+        var response = await data.json()
+
+    }
+    catch(e:any){
+        console.log("ERROR: ",e)
+    }
    
     return {
         props:{
-            mushrooms:[...res]
+            mushrooms:[...response]
         }
     }
 }

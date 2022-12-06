@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import connect from '../../utils/connection'
 import {Product} from '../../utils/schema';
 import errorHandler from '../../utils/errorHandler'
+import os from 'os'
 type Data = {
     name: string;
     description: string;
@@ -10,7 +11,7 @@ type Data = {
 
 export default async function handler(req:NextApiRequest,res:NextApiResponse){
   try{
-
+    console.log("HOOOOST",os.networkInterfaces())
     if(req.method!=='GET'){
       throw new Error('Only get requests for this route.');
     }

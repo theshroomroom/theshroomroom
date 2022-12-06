@@ -12,7 +12,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
     try{
         await connect()
         console.log('ERRRRRRR WEBHOOK') 
-        console.log(req.headers)
+        console.log(req.headers.host)
         if(req.method==="POST"){
             if(!req.headers["stripe-signature"]){
                 throw new Error('No stripe signature')
@@ -42,7 +42,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                     console.log('PAYMENT INTENT SUCCEEEDED')
                     console.log(payload)
                     console.log(JSON.parse(payload))
-                    const update_success= await fetch(`${process.env.ORIGIN_URL}/api/order`,{
+                    const update_success= await fetch(`http://${req.headers.host}/api/order`,{
                         method:"PUT",
                         body: JSON.stringify({
                             paymentIntentId: JSON.parse(payload).data.object.id,
@@ -55,7 +55,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                     console.log(success)
                 break;
                 case "payment_intent.failed":
-                    const update_failure= await fetch(`${process.env.ORIGIN_URL}/api/order`,{
+                    const update_failure= await fetch(`http://${req.headers.host}/api/order`,{
                         method:"PUT",
                         body: JSON.stringify({
                             paymentIntentId: JSON.parse(payload).data.object.id,
@@ -68,7 +68,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                 break;
                 
                 case "payment_intent.canceled":
-                    const update_cancel= await fetch(`${process.env.ORIGIN_URL}/api/order`,{
+                    const update_cancel= await fetch(`http://${req.headers.host}/api/order`,{
                         method:"PUT",
                         body: JSON.stringify({
                             paymentIntentId: JSON.parse(payload).data.object.id,
