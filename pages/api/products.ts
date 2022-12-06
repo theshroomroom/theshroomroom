@@ -14,7 +14,9 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
     if(req.method!=='GET'){
       throw new Error('Only get requests for this route.');
     }
+    console.log('pre connect')
     await connect()
+    console.log('post connect')
     var response;
     console.log(req.url);
     if(RegExp('product=').test(req.url as string)===true){

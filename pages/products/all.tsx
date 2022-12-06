@@ -91,12 +91,20 @@ export default function Product(props:{mushrooms:ProductInterface[]}){
     )
 }
 export async function getServerSideProps(){
-    const data= await fetch(`${process.env.ORIGIN_URL}/api/products/`)
-    const res = await data.json()
-   
-    return {
-        props:{
-            mushrooms:[...res]
+    console.log('EVEN MORE PRE CONNECT')
+    try {
+        const data= await fetch(`${process.env.ORIGIN_URL}/api/products/`)
+        const res = await data.json()
+    
+       
+        return {
+            props:{
+                mushrooms:[...res]
+            }
         }
+
+    }
+    catch(e:any){
+        console.log('error yo',e)
     }
 }
