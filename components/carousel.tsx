@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import {useState} from 'react';
 interface ImageType {
+    name:string,
     alt:string,
     path: string,
     fileType: string,
@@ -43,12 +44,12 @@ export default function Carousel(props:any){
             <div className="carousel-slide-wrap">
                     {
                         indexArray?
-                    props.imageProps.map(({alt,path,fileType,link,width,height}:ImageType,idx:number)=>{
-                        console.log(idx)
+                    props.imageProps.map(({alt,path,fileType,name,link,width,height}:ImageType,idx:number)=>{
+                        console.log(name)
                         return(
                             
                             <div key={idx}className="carousel-image-wrap" style={{transform: `translateX(${indexArray[idx]*60}vw`}}>
-                                <Link href={link} >
+                                <Link href={`/products/${name.replace(/[\s]/gi,'-').replace(/['\'']/gi,'&apos')}`} >
                                     <a>
                                         <Image className={"carousel-image"} objectFit="contain"  layout="fill" key={idx} alt={alt} src={path+'.'+fileType}/>    
                                     </a>

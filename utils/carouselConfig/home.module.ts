@@ -1,4 +1,5 @@
 export const CarouselHomeNewArrivals :{
+    name:string,
     alt: string,
     path: string,
     fileType:string,
@@ -7,6 +8,7 @@ export const CarouselHomeNewArrivals :{
     height:number
 }[]=[
     {
+        name: 'Lion\'s Mane',
         alt:'lions mane mushroom',
         path:'/products/mushrooms/lions_mane',
         fileType:'jpeg',
@@ -14,7 +16,8 @@ export const CarouselHomeNewArrivals :{
         width:334,
         height:151
     },
-    {
+    {  
+        name:"Turkey Tail",
         alt:'turkey tail mushroom',
         path:'/products/mushrooms/turkey_tail',
         fileType:'jpeg',
@@ -23,6 +26,7 @@ export const CarouselHomeNewArrivals :{
         height:1885
     },
     {
+        name:'Reishi',
         alt:'reshi mushroom',
         path:'/products/mushrooms/reishi',
         fileType:'jpg',

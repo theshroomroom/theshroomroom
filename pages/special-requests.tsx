@@ -1,4 +1,19 @@
+import {FormEvent,useState} from 'react';
+import {getCsrfToken} from 'next-auth/react';
+
 export default function SpecialRequests(){
+    async function submitSpecialRequest(e:FormEvent){
+        // const [request,setRequest]=useState('');
+        const res = await fetch('/api/specialRequest',{
+            method:"POST",
+            headers: {
+                csrftoken: await getCsrfToken() as string
+            },
+            body: JSON.stringify({
+
+            })
+        })
+    }
     return(
         <>
         <h1>Special Requests</h1>
@@ -13,7 +28,10 @@ export default function SpecialRequests(){
         </ul>
         <form>
             <input placeholder="Name" />
-            <textarea placeholder="Insert request"></textarea>
+            <textarea placeholder="Insert request" onChange={(e)=>{
+
+            }}></textarea>
+            {/* <button onClick={(e)=>submitSpecialRequest(e)}>Submit</button> */}
         </form>
         </>
         )

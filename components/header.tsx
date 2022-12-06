@@ -84,10 +84,10 @@ export default function Header(){
                             const target = e.target as Element;
                             toggleDisplay(target)}}>Products</span>
                         <ul className={styles['sub-menu'] +' hidden-mobile'}>
-                            <li className={styles["sub-menu-element"]}><Link href='/products/all' passHref replace><a>All products</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/products/mushrooms"passHref replace><a>Mushrooms</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/products/equipment" passHref replace><a>Equipment</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/products/mycological-supplies" passHref replace><a>Mycological supplies</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href='/products/all' passHref replace><a>All products</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/products/mushrooms"passHref replace><a>Mushrooms</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/products/equipment" passHref replace><a>Equipment</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/products/mycological-supplies" passHref replace><a>Mycological supplies</a></Link></li>
                         </ul>
                     </li>
                     <li className={styles["nav-element"]}>
@@ -95,10 +95,10 @@ export default function Header(){
                             const target = e.target as Element;
                             toggleDisplay(target)}}>Mushrooms</span>
                         <ul className={styles['sub-menu'] +' hidden-mobile'}>
-                            <li className={styles["sub-menu-element"]}><Link href="/what-we-grow" passHref replace><a>What we grow</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/special-requests" passHref replace><a>Special requests</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/recipes" passHref replace><a>Recipes</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/share-your-recipes" passHref replace><a>Share your recipes</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/what-we-grow" passHref replace><a>What we grow</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/special-requests" passHref replace><a>Special requests</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/recipes" passHref replace><a>Recipes</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/share-your-recipes" passHref replace><a>Share your recipes</a></Link></li>
                         </ul>
                     </li>
                     <li className={styles["nav-element"]}>
@@ -106,9 +106,9 @@ export default function Header(){
                             const target = e.target as Element;
                             toggleDisplay(target)}}>More</span>
                         <ul className={styles['sub-menu'] +' hidden-mobile'}>
-                            <li className={styles["sub-menu-element"]}><Link href="/nfts" passHref replace><a>NFTs</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/cultivation" passHref replace><a>Cultivation method</a></Link></li>
-                            <li className={styles["sub-menu-element"]}><Link href="/identification" passHref replace><a>Identify wild mushrooms</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/nfts" passHref replace><a>NFTs</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/cultivation" passHref replace><a>Cultivation method</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/identification" passHref replace><a>Identify wild mushrooms</a></Link></li>
                         </ul>
                     </li>
                     <li className={styles['nav-element']}>
@@ -116,7 +116,7 @@ export default function Header(){
                             const target = e.target as Element;
                             toggleDisplay(target)}}>About</span>
                         <ul className={styles['sub-menu'] +' hidden-mobile'}>
-                            <li className={styles["sub-menu-element"]}><Link href="/about" passHref replace><a>The Shroom Room</a></Link></li>
+                            <li onClick={(e)=>menuOpen()} className={styles["sub-menu-element"]}><Link href="/about" passHref replace><a>The Shroom Room</a></Link></li>
                         </ul>
                     </li>
                 </ul>

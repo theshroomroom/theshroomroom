@@ -1,4 +1,5 @@
 interface ProductImage {
+    name: string,
     alt: string,
     path:string,
     fileType: string,
@@ -8,6 +9,7 @@ interface ProductImage {
 }
 export const imageMap: {[mushroom:string]:ProductImage} = {
     'Lion\'s Mane':{
+        name: 'Lions Mane',
         alt:'lions mane mushroom',
         path:'/products/mushrooms/lions_mane',
         fileType:'jpeg',
@@ -16,6 +18,7 @@ export const imageMap: {[mushroom:string]:ProductImage} = {
         height:151
     },
     'Turkey Tail':{
+        name: 'Turkey Tail',
         alt:'turkey tail mushroom',
         path:'/products/mushrooms/turkey_tail',
         fileType:'jpeg',
@@ -24,6 +27,7 @@ export const imageMap: {[mushroom:string]:ProductImage} = {
         height:1885
     },
     'Reishi':{
+        name: 'Reishi',
         alt:'reshi mushroom',
         path:'/products/mushrooms/reishi',
         fileType:'jpg',
